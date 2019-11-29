@@ -73,34 +73,24 @@ public class LinkedListDequeTest {
 		ArrayDeque<Integer> lld1 = new ArrayDeque<Integer>();
 		// should be empty 
 		boolean passed = checkEmpty(true, lld1.isEmpty());
-
-		//lld1.addFirst(10);
-		lld1.addLast(10);
-		lld1.addLast(20);
-		lld1.addLast(30);
-		lld1.addLast(40);
-		lld1.addLast(50);
-		lld1.addLast(60);
-		lld1.addLast(70);
-		lld1.addLast(80);
-		lld1.addLast(90);
-		lld1.addLast(100);
-		lld1.addLast(110);
-		lld1.addLast(120);
-		lld1.addLast(130);
-		lld1.addLast(140);
-		lld1.addLast(150);
-		lld1.addLast(160);
+		lld1.removeFirst();
+		System.out.println(lld1.size());
+		lld1.addFirst(0);
 		lld1.removeLast();
-		lld1.removeLast();
-		lld1.removeLast();
-		lld1.removeLast();
-		lld1.removeLast();
-		lld1.removeLast();
-		lld1.removeLast();
-		lld1.removeLast();
-
-
+		lld1.addFirst(2);
+		lld1.addFirst(3);
+		lld1.addLast(4);
+		lld1.removeFirst();
+		lld1.get(0);
+		lld1.get(1);
+		lld1.get(1);
+		lld1.addLast(9);
+		lld1.addFirst(10);
+		lld1.get(3);
+		lld1.get(0);
+		lld1.addFirst(13);
+		lld1.addFirst(14);
+		System.out.println(lld1.get(4));
 
 		// should not be empty 
 		passed = checkEmpty(false, lld1.isEmpty()) && passed;
@@ -120,4 +110,4 @@ public class LinkedListDequeTest {
 		addIsEmptySizeTest();
 		addRemoveTest();
 	}
-} 
+}

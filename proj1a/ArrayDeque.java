@@ -52,10 +52,10 @@ public class ArrayDeque<T> {
 
     private int resizeIdx(int idx) {
         if (idx >= items.length) {
-            idx = 0;
+            idx = idx - items.length;
         }
         if (idx < 0) {
-            idx = items.length - 1;
+            idx = items.length + idx;
         }
         return idx;
     }
@@ -83,6 +83,9 @@ public class ArrayDeque<T> {
         T result = items[nextFirst];
         items[nextFirst] = null;
         size--;
+        if (size < 0) {
+            size = 0;
+        }
         if (items.length > 16 && size < items.length / 4.0) {
             resizeSmall();
         }
@@ -94,6 +97,9 @@ public class ArrayDeque<T> {
         T result = items[nextLast];
         items[nextLast] = null;
         size--;
+        if (size < 0) {
+            size = 0;
+        }
         if (items.length > 16 && size < items.length / 4.0) {
             resizeSmall();
         }
