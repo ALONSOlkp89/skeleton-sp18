@@ -27,15 +27,13 @@ public class ArrayDeque<T> {
         int copyNum = 0;
         int desIdx = items.length * factor / 4;
         int orgIdx = nextFirst + 1;
-        while(copyNum < size) {
+        while (copyNum < size) {
             orgIdx = resizeIdx(orgIdx);
             temp[desIdx] = items[orgIdx];
             orgIdx++;
             desIdx++;
             copyNum++;
         }
-        //System.arraycopy(items, resizeIdx(nextFirst+1), temp, size * factor / 4 - 1 , items.length - resizeIdx(nextFirst+1));
-        //System.arraycopy(items, resizeIdx(nextFirst+1), temp, size * factor / 4 - 1 , items.length - nextFirst);
         nextFirst = items.length * factor / 4 - 1;
         nextLast = desIdx;
         items = temp;
@@ -104,12 +102,18 @@ public class ArrayDeque<T> {
 
     private void resizeSmall() {
         T[] temp = (T[]) new Object[items.length / 2];
-        if (resizeIdx(nextLast - 1) > resizeIdx(nextFirst + 1)) {
-            System.arraycopy(items, nextFirst + 1, temp, 0, size);
-        } else {
-            System.arraycopy(items, nextFirst + 1, temp, 0, items.length - nextFirst - 1);
-            System.arraycopy(items, 0,  temp, items.length - nextFirst - 1, nextLast);
+        int copyNum = 0;
+        int desIdx = temp.length / 4;
+        int orgIdx = nextFirst + 1;
+        while (copyNum < size) {
+            orgIdx = resizeIdx(orgIdx);
+            temp[desIdx] = items[orgIdx];
+            orgIdx++;
+            desIdx++;
+            copyNum++;
         }
+        nextFirst = temp.length / 4 - 1;
+        nextLast = desIdx;
         items = temp;
     }
 
