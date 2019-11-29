@@ -6,7 +6,7 @@ public class LinkedListDeque<T> {
         private TNode prev;
         private T item;
         private TNode next;
-        public TNode(TNode pre, T i, TNode nex){
+        public TNode(TNode pre, T i, TNode nex) {
             prev = pre;
             item = i;
             next = nex;
@@ -24,17 +24,17 @@ public class LinkedListDeque<T> {
 
     }
 
-    private T getRecursiveHelper(TNode sentinel, int index) {
-        if (sentinel.next == null) {
+    private T getRecursiveHelper(TNode p, int index) {
+        if (p.next == null) {
             return null;
         }
         if (index == 0) {
-            return sentinel.next.item;
+            return p.next.item;
         }
         if (index >= size) {
             index = size - 1;
         }
-        TNode p = sentinel.next;
+        p = p.next;
         return getRecursiveHelper(p, index - 1);
     }
 
@@ -53,7 +53,7 @@ public class LinkedListDeque<T> {
     public boolean isEmpty() {
         return 0 == size;
     }
-    public int size(){
+    public int size() {
         return size;
     }
     public void printDeque() {
